@@ -49,7 +49,11 @@ public class DebitCard extends ChargeCard {
         bankBalance += depositAmnt;
     }
 
-    public boolean withdrawFunds(double withdrawalAmnt) {
+    public double amntAvailToSpend(){
+        return bankBalance + overdraftLimit;
+    }
+
+        public boolean withdrawFunds(double withdrawalAmnt) {
         bankBalance -= withdrawalAmnt;
         if (bankBalance < 0) {
             bankBalance += withdrawalAmnt;

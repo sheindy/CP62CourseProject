@@ -48,6 +48,10 @@ public class CreditCard extends ChargeCard {
         balance = 0;
     }
 
+    public double amntAvailToSpend(){
+        return spendingLimit - balance;
+    }
+
     // creates string representation of credit card object
     public String toString() {
         return getName() + "\nBalance $" + balance + "\nSpending Limit $" +

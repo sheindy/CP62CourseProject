@@ -1,9 +1,20 @@
 // abstract class can have abstract method
 // needed an abstract method. see purchaseAmnt()
 
-public abstract class ChargeCard {
+public abstract class ChargeCard implements Comparable<ChargeCard>{
     private String name;
     private String cardNumber;
+
+    //
+    public int compareTo(ChargeCard other) {
+        if (other.amntAvailToSpend() > amntAvailToSpend()) {
+            return -1;
+        }
+        if (other.amntAvailToSpend()< amntAvailToSpend()) {
+            return 1;
+        }
+        return 0;
+    }
 
     // abstract method only contains a header and the concrete subclass
     // MUST override the abstract method and provide a body
@@ -12,6 +23,9 @@ public abstract class ChargeCard {
     // return type is boolean because if the return was true then the purchase went through
     // and if it returned false the purchase didn't go through and it was declined
     public abstract boolean purchase(double purchaseAmnt);
+
+    //
+    public abstract double amntAvailToSpend();
 
     // constructor
     public ChargeCard(String name, String cardNumber) {
